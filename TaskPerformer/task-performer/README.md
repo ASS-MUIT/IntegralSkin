@@ -2,6 +2,7 @@
 Esta aplicación Spring Boot actúa como Task Performer conforme a IHE-AIW-I.
 Envuelve los algoritmos de IA del proyecto IntegralSkin y los ofrece como un servicio implementando el actor TaskPerformer de IHE AIW-I
 La obtención de workitems desde el taskManager se hará con un modelo Triggered-Pull
+Usa RAD_86 y RAD_87 para suscribirse y recibir notificaciones del TaskManager (la información de acceso al TaskManager estará en application.properties)
 # Getting Started
 
 ### Reference Documentation

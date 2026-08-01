@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # 1. Base de datos de esquemas LDAP para dcm4chee
+  ldap:
+    image: dcm4che/slapd-dcm4chee:2.6.7-33.1
+    container_name: taskmanager-ldap
+    ports:
+      - "389:389"
+    environment:
+      STORAGE_DIR: /storage/fs1
+
+  # 2. Base de datos PostgreSQL para tareas e imágenes
+  db:
+    image: dcm4che/postgres-dcm4chee:17.1-33
+    container_name: taskmanager-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: pacsdb
+      POSTGRES_USER: pacs
+      POSTGRES_PASSWORD: pacs
+
+  # 3. El Task Manager / PACS (DCM4CHEE Arc Light)
+  arc:
+    image: dcm4che/dcm4chee-arc-psql:5.33.1
+    container_name: taskmanager-arc
+    ports:
+      - "8080:8080"   # Puerto de la API REST / UPS-RS
+      - "11112:11112" # Puerto DICOM C-STORE / DIMSE
+      - "9990:9990"   # Consola de administración
+    environment:
+      POSTGRES_DB: pacsdb
+      POSTGRES_USER: pacs
+      POSTGRES_PASSWORD: pacs
+      WILDFLY_WAIT_FOR: "ldap:389 db:5432"
+    depends_on:
+      - ldap
+      - db
