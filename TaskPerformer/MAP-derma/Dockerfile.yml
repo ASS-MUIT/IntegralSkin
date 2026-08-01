@@ -1,0 +1,26 @@
+#1. Propuesta de Dockerfile (Skeleton)
+#Este Dockerfile prepara el entorno para una aplicación compatible con el MONAI Deploy App SDK, 
+#que facilita el empaquetado como un MONAI Application Package (MAP).
+
+# 1. Imagen base (preferiblemente con soporte para Python y las librerías de IA que usen)
+FROM projectmonai/monai:latest
+
+# 2. Instalación de dependencias de interoperabilidad
+# pydicom: para manipular cabeceras DICOM y crear SR [5]
+# monai-deploy-app-sdk: para cumplir con el estándar de empaquetado MONAI [6]
+RUN pip install pydicom monai-deploy-app-sdk
+
+# 3. Definición de la estructura de carpetas (Contrato de Artifacts) [7]
+# El Workflow Manager mapeará los datos aquí
+ENV INPUT_DIR=/var/monai/input
+ENV OUTPUT_DIR=/var/monai/output
+
+RUN mkdir -p ${INPUT_DIR} ${OUTPUT_DIR}
+
+# 4. Copia del código del equipo de algoritmia
+COPY ./src /opt/ai-model
+
+# 5. Comando de ejecución
+# El script principal debe ser el que procesa la lógica de inferencia y XAI
+WORKDIR /opt/ai-model
+ENTRYPOINT ["python", "main.py"]
