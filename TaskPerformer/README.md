@@ -14,3 +14,7 @@ El objetivo es envolver los algoritmos de IA del proyecto IntegralSkin y ofrecer
 
 La obtención de workitems desde el taskManager se basa en el servicio UPS-RS de Dicom, según el modelo Triggered-Pull. Usa RAD_86 y RAD_87 para suscribirse y recibir notificaciones del TaskManager (la información de acceso al TaskManager estará en application.properties)
 
+* [IHE-AIR, AI Results](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_Suppl_AIR.pdf)
+
+* [IHE-AIRA, AI Results for Imaging](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_Suppl_AIRA.pdf)
+
