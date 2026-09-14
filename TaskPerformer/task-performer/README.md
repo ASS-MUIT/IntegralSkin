@@ -1,8 +1,30 @@
 # Task Performer
-Esta aplicación Spring Boot actúa como Task Performer conforme a IHE-AIW-I.
+Esta aplicación Spring Boot actúa como Task Performer conforme a [IHE-AIW-I, AI workflow for imaging](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_Suppl_AIW-I.pdf).
 Envuelve los algoritmos de IA del proyecto IntegralSkin y los ofrece como un servicio implementando el actor TaskPerformer de IHE AIW-I
-La obtención de workitems desde el taskManager se hará con un modelo Triggered-Pull
+La obtención de workitems desde el taskManager se basa en el servicio [Unified Procedure Step Service (UPS-RS) de Dicom]
+(https://dicom.nema.org/medical/dicom/2019a/output/chtml/part18/sect_6.9.html), según el modelo Triggered-Pull.
+
 Usa RAD_86 y RAD_87 para suscribirse y recibir notificaciones del TaskManager (la información de acceso al TaskManager estará en application.properties)
+
+## Esquema IHE-AIW-I
+
+```mermaid
+sequenceDiagram
+	participant TP as Task Performer
+	participant TM as Task Manager
+	participant MAP as Algoritmo IA / MAP
+
+	TP->>TM: Suscripcion a la lista UPS (RAD-86)
+	TM-->>TP: Confirmacion de suscripcion
+	TM-->>TP: Notificacion de workitem (RAD-87)
+	TP->>TM: Pull del workitem notificado
+	TM-->>TP: Datos del workitem
+	TP->>TM: Reclamo del workitem (RAD-82)
+	TP->>MAP: Ejecuta el algoritmo
+	MAP-->>TP: Resultado
+	TP->>TM: Actualiza el estado y el resultado
+```
+
 # Getting Started
 
 ### Reference Documentation
