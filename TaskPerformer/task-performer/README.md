@@ -14,15 +14,16 @@ sequenceDiagram
 	participant TM as Task Manager
 	participant MAP as Algoritmo IA / MAP
 
-	TP->>TM: Suscripcion a la lista UPS (RAD-86)
+	TP->>TM: Abrir canal de eventos, suscripción (RAD-109)
 	TM-->>TP: Confirmacion de suscripcion
 	TM-->>TP: Notificacion de workitem (RAD-87)
-	TP->>TM: Pull del workitem notificado
+	TP->>TM: Pull del workitem notificado (RAD-83)
 	TM-->>TP: Datos del workitem
 	TP->>TM: Reclamo del workitem (RAD-82)
 	TP->>MAP: Ejecuta el algoritmo
 	MAP-->>TP: Resultado
-	TP->>TM: Actualiza el estado y el resultado
+	TP->>TM: Actualiza el estado y el resultado (RAD-84)
+	TP->>TM: WI completado (RAD-85)
 ```
 
 # Getting Started
