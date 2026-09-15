@@ -22,11 +22,11 @@ repositories {
     
     // 2. Repositorio oficial de dcm4che (Imprescindible para módulos DICOM)
     maven {
-        url uri('https://www.dcm4che.org/maven2/')
+        url uri('https://www.dcm4che.org/maven2')
 	//	url uri('https://repository.jboss.org/nexus/content/groups/public/')
     }
 	maven {
-        url uri('https://mvn.weasis.org/maven-release/')
+        url uri('https://repository.jboss.org/nexus/content/repositories/public')
     }
 
 
