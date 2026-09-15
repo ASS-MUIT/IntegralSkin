@@ -1,2 +1,3 @@
 .github/modernize/
 .vscode/
+*.log
