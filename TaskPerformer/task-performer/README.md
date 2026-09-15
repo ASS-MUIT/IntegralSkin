@@ -36,6 +36,7 @@ For further reference, please consider the following sections:
 * [Create an OCI image](https://docs.spring.io/spring-boot/4.1.0/gradle-plugin/packaging-oci-image.html)
 * [Spring Web](https://docs.spring.io/spring-boot/4.1.0/reference/web/servlet.html)
 * [Spring Boot DevTools](https://docs.spring.io/spring-boot/4.1.0/reference/using/devtools.html)
+*[Librería DICOM, dcm4che](https://bradleyross.github.io/dcm4che/apidocs/)
 
 ### Guides
 The following guides illustrate how to use some features concretely:

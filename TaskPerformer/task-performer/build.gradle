@@ -5,7 +5,7 @@ plugins {
 }
 // 1. Definición de variables centralizadas
 ext {
-    dcm4cheVersion = '5.31.0'
+    dcm4cheVersion = '5.35.0'
 }
 group = 'dit.us.derma'
 version = '0.0.1-SNAPSHOT'
@@ -23,16 +23,20 @@ repositories {
     // 2. Repositorio oficial de dcm4che (Imprescindible para módulos DICOM)
     maven {
         url uri('https://www.dcm4che.org/maven2/')
+	//	url uri('https://repository.jboss.org/nexus/content/groups/public/')
+    }
+	maven {
+        url uri('https://mvn.weasis.org/maven-release/')
     }
 
 
 }
 
 dependencies {
-	implementation "jakarta.json:jakarta.json-api:2.1.3"
+	//implementation "jakarta.json:jakarta.json-api:2.1.3"
 
     // Proveedor runtime (necesario para que Json.createParser() funcione en ejecución)
-    runtimeOnly "org.glassfish:jakarta.json:2.0.1"
+    implementation "org.glassfish:javax.json:1.1.4"
 	// Source: https://mvnrepository.com/artifact/org.dcm4che/dcm4che-core
 	implementation "org.dcm4che:dcm4che-core:${dcm4cheVersion}"
 	// Source: https://mvnrepository.com/artifact/org.dcm4che.tool/dcm4che-tool-common
