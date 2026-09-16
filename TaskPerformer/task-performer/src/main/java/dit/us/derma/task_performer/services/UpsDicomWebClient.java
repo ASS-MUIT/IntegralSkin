@@ -6,14 +6,14 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-import jakarta.json.Json;
-import jakarta.json.stream.JsonGenerator;
-
 import org.dcm4che3.data.Attributes;
 import org.dcm4che3.data.Tag;
 import org.dcm4che3.data.VR;
 import org.dcm4che3.json.JSONWriter;
 import org.dcm4che3.util.UIDUtils;
+
+import jakarta.json.Json;
+import jakarta.json.stream.JsonGenerator;
 
 public class UpsDicomWebClient {
 
