@@ -18,17 +18,20 @@ java {
 
 repositories {
 	mavenCentral()
-// 1. Repositorio estándar de Maven Central  
-    
-    // 2. Repositorio oficial de dcm4che (Imprescindible para módulos DICOM)
+// 1. Repositorio oficial de dcm4che
     maven {
-        url uri('https://www.dcm4che.org/maven2')
-	//	url uri('https://repository.jboss.org/nexus/content/groups/public/')
+        url uri('https://www.dcm4che.org/maven2/')
     }
-	maven {
-        url uri('https://repository.jboss.org/nexus/content/repositories/public')
+    
+    // 2. Repositorio de Weasis (NECESARIO para resolver "weasis-core-img-bom")
+    maven {
+        url uri('https://raw.githubusercontent.com/nroduit/mvn-repo/master')
     }
 
+    // 3. Repositorio de respaldo JBoss/Nexus
+    maven {
+        url uri('https://repository.jboss.org/nexus/content/groups/public/')
+    }
 
 }
 

@@ -6,8 +6,8 @@ La obtención de workitems desde el taskManager se basa en el servicio [Unified 
 
 Usa RAD_86 y RAD_87 para suscribirse y recibir notificaciones del TaskManager (la información de acceso al TaskManager estará en application.properties)
 
-## Esquema IHE-AIW-I
-
+## Esquemas IHE-AIW-I
+# Modo Triggered Pull
 ```mermaid
 sequenceDiagram
 	participant TP as Task Performer
